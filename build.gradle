@@ -52,7 +52,7 @@ publishing {
     publications {
         gpr(MavenPublication) {
             from(components.java)
-            artifacts = ["lib/swagger-java-client-" + SWAGGER_JAVA_CLIENT_VERSION + ".jar", sourceJar]
+            artifacts = ["lib/swagger-java-client-" + SWAGGER_JAVA_CLIENT_VERSION + ".jar"]
         }
     }
 }
