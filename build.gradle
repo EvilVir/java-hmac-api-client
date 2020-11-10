@@ -34,6 +34,16 @@ task sourcesJar(type: Jar, dependsOn:classes) {
      from sourceSets.main.allSource
 }
 
+task uberJar(type: Jar) {
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('swagger-java-client-' + SWAGGER_JAVA_CLIENT_VERSION + '.jar') }.collect { zipTree(it) }
+    } with jar
+}
+
 artifacts {
      archives sourcesJar
 }
@@ -50,9 +60,9 @@ publishing {
         }
     }
     publications {
-        gpr(MavenPublication) {
-            from(components.java)
-            artifacts = ["lib/swagger-java-client-" + SWAGGER_JAVA_CLIENT_VERSION + ".jar"]
+        gcp(MavenPublication) {
+            //from(components.java)
+            artifact uberJar
         }
     }
 }
