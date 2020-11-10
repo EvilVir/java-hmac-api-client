@@ -12,6 +12,6 @@ jobs:
       - name: Publish package
         run: gradle publish
         env:
-          PUBLISH_REPOSITORY: evilvir/modulr-java-hmac-api-client
+          PUBLISH_REPOSITORY: evilvir/java-hmac-api-client
           PUBLISH_ACTOR: ${{ env.GITHUB_ACTOR }}
           PUBLISH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
