@@ -12,6 +12,6 @@ jobs:
       - name: Publish package
         run: gradle publish
         env:
-          PUBLISH_REPOSITORY: ${{ evn.GITHUB_REPOSITORY }}
-          PUBLISH_ACTOR: ${{ evn.GITHUB_ACTOR }}
+          PUBLISH_REPOSITORY: ${{ env.GITHUB_REPOSITORY }}
+          PUBLISH_ACTOR: ${{ env.GITHUB_ACTOR }}
           PUBLISH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
