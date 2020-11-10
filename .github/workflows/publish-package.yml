@@ -1,0 +1,17 @@
+name: Publish package
+on: [push]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Publish package
+        run: gradle publish
+        env:
+          PUBLISH_REPOSITORY: ${{ evn.GITHUB_REPOSITORY }}
+          PUBLISH_ACTOR: ${{ evn.GITHUB_ACTOR }}
+          PUBLISH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

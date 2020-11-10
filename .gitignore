@@ -7,3 +7,5 @@
 /.factorypath
 /.project
 /.sonar_lock
+.DS_Store
+local.properties
