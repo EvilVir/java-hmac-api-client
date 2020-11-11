@@ -11,7 +11,7 @@ group = 'com.modulr.modulo.client'
 /* versions of dependencies */
 ext {
 	/* compile time dependencies*/
-	SWAGGER_JAVA_CLIENT_VERSION = '3.3.0'
+	SWAGGER_JAVA_CLIENT_VERSION = '3.3.1'
 }
 
 repositories {
