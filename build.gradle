@@ -34,14 +34,13 @@ task sourcesJar(type: Jar, dependsOn:classes) {
      from sourceSets.main.allSource
 }
 
-task uberJar(type: Jar) {
+jar {
     from sourceSets.main.output
-
     dependsOn configurations.runtimeClasspath
 
     from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('swagger-java-client-' + SWAGGER_JAVA_CLIENT_VERSION + '.jar') }.collect { zipTree(it) }
-    } with jar
+        configurations.runtimeClasspath.findAll { it.name.equals('swagger-java-client-' + SWAGGER_JAVA_CLIENT_VERSION + '.jar') }.collect { zipTree(it) }
+    }
 }
 
 artifacts {
@@ -61,8 +60,8 @@ publishing {
     }
     publications {
         gcp(MavenPublication) {
-            //from(components.java)
-            artifact uberJar
+            from(components.java)
+            artifacts = [ jar ]
         }
     }
 }
